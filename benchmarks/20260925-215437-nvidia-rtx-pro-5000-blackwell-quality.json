@@ -1,0 +1,42 @@
+{
+  "created_at": "2026-09-25T12:54:37.702570+00:00",
+  "profile": "quality",
+  "steps": 40,
+  "seed": 12345,
+  "cases": [
+    "t2i"
+  ],
+  "resolutions": [
+    1024
+  ],
+  "environment": {
+    "gpu_name": "NVIDIA RTX PRO 5000 Blackwell",
+    "gpu_memory_gib": 47.26,
+    "compute_capability": "12.0",
+    "driver": "580.173.02",
+    "cuda": "13.0",
+    "torch": "2.14.0+cu130",
+    "diffusers": "0.41.0.dev0",
+    "transformers": "5.17.0",
+    "torchao": "0.18.0",
+    "python": "3.12.3",
+    "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39"
+  },
+  "load": {
+    "seconds": 6.03,
+    "peak_vram_gib": 30.73
+  },
+  "results": [
+    {
+      "case": "t2i",
+      "resolution": 1024,
+      "reference_count": 0,
+      "reference_resolution": null,
+      "status": "ok",
+      "seconds": 20.06,
+      "peak_vram_gib": 31.62,
+      "torch_peak_allocated_gib": 30.84,
+      "torch_peak_reserved_gib": 31.22
+    }
+  ]
+}
