@@ -31,6 +31,18 @@ The Viggle weights are not included in this Git repository. The download script
 retrieves only the selected adapter, scheduler, model card, license, and NOTICE
 from the provider after explicit license acceptance.
 
+## Qwen Image 2.1 Viewpoint Orbit LoRA
+
+- Provider: ML-Intern-lab
+- Source: <https://huggingface.co/ML-Intern-lab/Qwen-Image-2.1-viewpoint-orbit-LoRA>
+- License: Qwen RESEARCH LICENSE AGREEMENT
+- Relationship: derivative viewpoint-control adapter for Qwen Image 2.1
+- Use restriction: non-commercial research or evaluation only unless a separate commercial license is obtained from the Qwen licensor.
+
+The Orbit weights are not included in this Git repository. The optional
+download script retrieves the selected adapter, model card, and license from
+the provider only after explicit license acceptance.
+
 ## Software dependencies
 
 Diffusers, Transformers, PyTorch, TorchAO, FastAPI, Uvicorn, Pillow, PEFT,

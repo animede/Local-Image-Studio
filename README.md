@@ -1,11 +1,16 @@
 # Local Image Studio — for Qwen Image 2.1
 
+> **Development has moved:** このリポジトリは互換性維持と履歴参照のために残しています。
+> 最新の修正、高速化、低VRAM化は後継の
+> [`diffusers-engine-q21`](https://github.com/animede/diffusers-engine-q21) で継続しています。
+
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-blue.svg)](LICENSE)
 
 > **License notice:** This repository's original source code and documentation
-> are licensed under Apache-2.0. Qwen Image 2.1 and Viggle Turbo weights are
-> governed by the non-commercial Qwen Research License and are not included in
-> this repository. See [Third-party notices](THIRD_PARTY_NOTICES.md).
+> are licensed under Apache-2.0. Qwen Image 2.1, Viggle Turbo, and optional
+> Orbit LoRA weights are governed by the non-commercial Qwen Research License
+> and are not included in this repository. See
+> [Third-party notices](THIRD_PARTY_NOTICES.md).
 
 公式Diffusersモデル [`Qwen/Qwen-Image-2.1`](https://huggingface.co/Qwen/Qwen-Image-2.1) をローカルGPUで実行する、APIサーバーとWebフロントエンドです。
 
@@ -23,6 +28,8 @@ outputs/                生成PNGと条件JSON（Git管理外）
 APIはモデルをGPUに常駐させ、生成ジョブを1件ずつ処理します。フロントエンドはAPIと分離されており、REST APIだけを別クライアントから利用することもできます。
 
 高速化・低VRAM化の仕組み、全プロファイルの比較、GPU容量別の選び方は[高速化・低VRAM化ガイド](docs/performance-low-vram.md)にまとめています。
+
+実験機能として、視点を相対角度で変更するOrbit LoRAについても、NVFP4、Viggle併用、RGB/RGBA、人物・キャラクターを24GB GPUで検証しています。結果と再現方法は[Orbit LoRA互換性・性能プローブ](docs/orbit-lora.md)を参照してください。
 
 既定でDiTとQwen3-VLをTorchAO NVFP4（W4A4）で量子化します。BlackwellのネイティブNVFP4演算により、RTX PRO 4000 Blackwell 24GBでもCPUオフロードなしで高速に実行できます。Qwen3-VLのVision EncoderとDiTの非対応層だけはBF16のままです。量子化は読み込み時に行うため、別のモデルダウンロードは不要です。
 
@@ -271,6 +278,6 @@ NVFP4キャッシュがある場合は起動時の量子化変換をスキップ
 
 本リポジトリで独自に作成したソースコードとドキュメントは[Apache License 2.0](LICENSE)で公開します。主な独自実装は、選択的NVFP4量子化、再利用可能な量子化キャッシュ、参照枚数に応じたVision入力制御、量子化・Viggle・CPU offloadを組み合わせる起動プロファイル、および速度・VRAMベンチマーク基盤です。これは学術的新規性や特許性を主張するものではありません。
 
-Qwen Image 2.1、Viggle Turbo、Diffusers、PyTorch、TorchAOなどの第三者素材・ソフトウェアは、それぞれのライセンスに従います。特にQwenとViggleのモデル重みはApache-2.0の対象外で、Qwen Research License上、研究・評価目的の非商用利用に限定されます。詳細は[NOTICE](NOTICE)、[Third-party notices](THIRD_PARTY_NOTICES.md)、[Security policy](SECURITY.md)を確認してください。
+Qwen Image 2.1、Viggle Turbo、Orbit LoRA、Diffusers、PyTorch、TorchAOなどの第三者素材・ソフトウェアは、それぞれのライセンスに従います。特にQwen、Viggle、Orbitのモデル重みはApache-2.0の対象外で、Qwen Research License上、研究・評価目的の非商用利用に限定されます。詳細は[NOTICE](NOTICE)、[Third-party notices](THIRD_PARTY_NOTICES.md)、[Security policy](SECURITY.md)を確認してください。
 
 Built with Qwen. Qwenおよび各社の製品名は説明目的で使用しており、提携や推奨を意味しません。
